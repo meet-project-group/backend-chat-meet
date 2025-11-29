@@ -6,6 +6,10 @@ import cors from "cors";
 const app = express();
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Chat backend is running 🚀");
+});
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -38,7 +42,6 @@ io.on("connection", (socket) => {
   });
 });
 
-// 🔥 Render necesita esto para funcionar
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => console.log("Servidor en", PORT));
 
